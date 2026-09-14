@@ -17,16 +17,15 @@ typedef struct _bstnode{
 	int item;
 	struct _bstnode *left;
 	struct _bstnode *right;
-} BSTNode;   // You should not change the definition of BSTNode
+}BSTNode;   // You should not change the definition of BSTNode
 
-typedef struct _QueueNode {
+typedef struct _QueueNode{
 	BSTNode *data;
 	struct _QueueNode *nextPtr;
 }QueueNode; // You should not change the definition of QueueNode
 
 
-typedef struct _queue
-{
+typedef struct _queue{
 	QueueNode *head;
 	QueueNode *tail;
 }Queue; // You should not change the definition of queue
@@ -45,8 +44,7 @@ void removeAll(BSTNode **node);
 
 ///////////////////////////// main() /////////////////////////////////////////////
 
-int main()
-{
+int main(){
 	int c, i;
 	c = 1;
 
@@ -91,10 +89,14 @@ int main()
 
 //////////////////////////////////////////////////////////////////////////////////
 
-void levelOrderTraversal(BSTNode* root)
-{
+void levelOrderTraversal(BSTNode* root){
 
-    /* add your code here */
+	if (root == NULL){
+			return;
+	}
+
+
+
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -128,8 +130,7 @@ void insertBSTNode(BSTNode **node, int value){
 //////////////////////////////////////////////////////////////////////////////////
 
 // enqueue node
-void enqueue(QueueNode **headPtr, QueueNode **tailPtr, BSTNode *node)
-{
+void enqueue(QueueNode **headPtr, QueueNode **tailPtr, BSTNode *node){
 	// dynamically allocate memory
 	QueueNode *newPtr = malloc(sizeof(QueueNode));
 
@@ -153,8 +154,7 @@ void enqueue(QueueNode **headPtr, QueueNode **tailPtr, BSTNode *node)
 	}
 }
 
-BSTNode* dequeue(QueueNode **headPtr, QueueNode **tailPtr)
-{
+BSTNode* dequeue(QueueNode **headPtr, QueueNode **tailPtr){
 	BSTNode *node = (*headPtr)->data;
 	QueueNode *tempPtr = *headPtr;
 	*headPtr = (*headPtr)->nextPtr;
@@ -168,15 +168,12 @@ BSTNode* dequeue(QueueNode **headPtr, QueueNode **tailPtr)
 	return node;
 }
 
-int isEmpty(QueueNode *head)
-{
+int isEmpty(QueueNode *head){
 	return head == NULL;
 }
 
-void removeAll(BSTNode **node)
-{
-	if (*node != NULL)
-	{
+void removeAll(BSTNode **node){
+	if (*node != NULL){
 		removeAll(&((*node)->left));
 		removeAll(&((*node)->right));
 		free(*node);

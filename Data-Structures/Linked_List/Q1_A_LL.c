@@ -90,13 +90,32 @@ int main()
 
 int insertSortedLL(LinkedList *ll, int item)
 {
-	/* add your code here */
+	ListNode *cur = ll->head;
+	int index = 0;
+
+	if (ll == NULL)
+	{
+		return -1;
+	}
+
+	while (cur != NULL)
+	{
+		if (cur->item > item)
+		{
+			break;
+		}
+		cur = cur->next;
+		index += 1;
+	}
+
+	insertNode(ll, index, item);
+	return index;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
 
-void printList(LinkedList *ll){
-
+void printList(LinkedList *ll)
+{
 	ListNode *cur;
 	if (ll == NULL)
 		return;
@@ -128,8 +147,8 @@ void removeAllItems(LinkedList *ll)
 }
 
 
-ListNode *findNode(LinkedList *ll, int index){
-
+ListNode *findNode(LinkedList *ll, int index)
+{
 	ListNode *temp;
 
 	if (ll == NULL || index < 0 || index >= ll->size)
@@ -150,8 +169,8 @@ ListNode *findNode(LinkedList *ll, int index){
 	return temp;
 }
 
-int insertNode(LinkedList *ll, int index, int value){
-
+int insertNode(LinkedList *ll, int index, int value)
+{
 	ListNode *pre, *cur;
 
 	if (ll == NULL || index < 0 || index > ll->size + 1)
@@ -183,8 +202,8 @@ int insertNode(LinkedList *ll, int index, int value){
 }
 
 
-int removeNode(LinkedList *ll, int index){
-
+int removeNode(LinkedList *ll, int index)
+{
 	ListNode *pre, *cur;
 
 	// Highest index we can remove is size-1
