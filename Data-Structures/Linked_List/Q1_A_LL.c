@@ -90,13 +90,15 @@ int main()
 
 int insertSortedLL(LinkedList *ll, int item)
 {
-	ListNode *cur = ll->head;
+	ListNode *cur;
 	int index = 0;
 
 	if (ll == NULL)
 	{
-		return -1;
+		return;
 	}
+
+	cur = ll->head;
 
 	while (cur != NULL)
 	{

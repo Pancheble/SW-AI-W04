@@ -103,13 +103,23 @@ int main()
 
 void alternateMergeLinkedList(LinkedList *ll1, LinkedList *ll2)
 {
-    /* add your code here */
+	if (ll1 == NULL || ll2 == NULL)
+	{
+		return;
+	}
+	
+	int min = (ll1->size < ll2->size) ? ll1->size : ll2->size;
+
+	for (int i = 1; min*2 + 1 > i; i += 2){
+		insertNode(ll1, i, ll2->head->item);
+		removeNode(ll2, 0);
+	}
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
 
-void printList(LinkedList *ll){
-
+void printList(LinkedList *ll)
+{
 	ListNode *cur;
 	if (ll == NULL)
 		return;
@@ -141,8 +151,8 @@ void removeAllItems(LinkedList *ll)
 }
 
 
-ListNode *findNode(LinkedList *ll, int index){
-
+ListNode *findNode(LinkedList *ll, int index)
+{
 	ListNode *temp;
 
 	if (ll == NULL || index < 0 || index >= ll->size)
@@ -163,8 +173,8 @@ ListNode *findNode(LinkedList *ll, int index){
 	return temp;
 }
 
-int insertNode(LinkedList *ll, int index, int value){
-
+int insertNode(LinkedList *ll, int index, int value)
+{
 	ListNode *pre, *cur;
 
 	if (ll == NULL || index < 0 || index > ll->size + 1)
@@ -196,8 +206,8 @@ int insertNode(LinkedList *ll, int index, int value){
 }
 
 
-int removeNode(LinkedList *ll, int index){
-
+int removeNode(LinkedList *ll, int index)
+{
 	ListNode *pre, *cur;
 
 	// Highest index we can remove is size-1
