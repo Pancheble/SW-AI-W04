@@ -110,7 +110,8 @@ void alternateMergeLinkedList(LinkedList *ll1, LinkedList *ll2)
 	
 	int min = (ll1->size < ll2->size) ? ll1->size : ll2->size;
 
-	for (int i = 1; min*2 + 1 > i; i += 2){
+	for (int i = 1; min*2 + 1 > i; i += 2)
+	{
 		insertNode(ll1, i, ll2->head->item);
 		removeNode(ll2, 0);
 	}
